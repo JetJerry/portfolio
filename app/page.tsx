@@ -24,13 +24,12 @@ const PROJECTS: Project[] = [
   { id: "Walamar_Analytics", title: "Walamar analytics", description: "Making patterns in data easier to see and act on.", language: "Python", colors: ["#4b3446", "#d89ab3"], symbol: "↗" },
   { id: "gene-ai", title: "gene-ai", description: "An ongoing exploration into creative generative AI systems.", language: "TypeScript", colors: ["#303d54", "#8daee2"], symbol: "g", image: "/projects/gene-ai.svg" },
   { id: "licence_plate_detection", title: "Licence plate detection", description: "Real-time computer vision for detecting vehicle licence plates.", language: "JavaScript", colors: ["#424b38", "#c2d18a"], symbol: "▦" },
-  { id: "logistic_management_assistant", title: "Logistic management assistant", description: "Using intelligent automation to make logistics workflows clearer.", language: "Python", colors: ["#3b4650", "#9ebbc4"], symbol: "→" },
+  { id: "logistic_management_assistant", title: "Logistic management assistant", description: "Using intelligent automation to make logistics workflows clearer.", language: "Python", colors: ["#3b4650", "#9ebbc4"], symbol: "→", image: "/projects/logistic-management.svg" },
   { id: "pocket_research", title: "Pocket research", description: "A compact workspace for collecting, exploring and connecting ideas.", language: "Python", colors: ["#3d4a3e", "#b7d38b"], symbol: "⌂", image: "/projects/pocket-research.svg" },
   { id: "shortClip", title: "shortClip", description: "Experiments in turning longer content into concise, useful clips.", language: "Python", colors: ["#563c34", "#d79a78"], symbol: "◌", image: "/projects/shortclip.svg" },
-  { id: "Income-expense-Website", title: "Income & expense website", description: "A practical web tool for making personal finances easier to understand.", language: "Python", colors: ["#30485b", "#8eb8c9"], symbol: "＋", image: "/projects/income-expense.svg" },
 ];
 
-const DEFAULT_SELECTION = ["ai_recommendation", "gene-ai", "pocket_research", "River-Flood-Predictor", "shortClip", "Income-expense-Website"];
+const DEFAULT_SELECTION = ["ai_recommendation", "gene-ai", "pocket_research", "River-Flood-Predictor", "shortClip", "logistic_management_assistant"];
 function ExternalLink({ href, children, className = "" }: { href: string; children: React.ReactNode; className?: string }) {
   return <a className={className} href={href} target="_blank" rel="noreferrer">{children}</a>;
 }
