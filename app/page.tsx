@@ -18,15 +18,15 @@ const PROJECTS: Project[] = [
   { id: "FT-HuggingFace", title: "Fine-tuning lab", description: "Experiments with adapting open models for focused, useful tasks.", language: "Python", colors: ["#765d31", "#e2c56a"], symbol: "∿" },
   { id: "rag-01-kn", title: "RAG knowledge base", description: "Retrieval-augmented generation experiments for grounded answers.", language: "Jupyter", colors: ["#244b4a", "#83c6b2"], symbol: "⌁" },
   { id: "voiceLedger", title: "voiceLedger", description: "Exploring voice as a faster, more natural interface for personal finance.", language: "Python", colors: ["#3a3b58", "#a69ad9"], symbol: "⌁" },
-  { id: "River-Flood-Predictor", title: "River flood predictor", description: "A data-driven look at forecasting and understanding flood risk.", language: "Jupyter", colors: ["#19445b", "#77bfd1"], symbol: "≈", image: "/projects/river-flood.svg" },
+  { id: "River-Flood-Predictor", title: "River Flood Predictor", description: "A data-driven look at forecasting and understanding flood risk.", language: "Jupyter", colors: ["#19445b", "#77bfd1"], symbol: "≈", image: "/projects/river-flood.svg" },
   { id: "face_recgonition-system", title: "Face recognition system", description: "Computer vision experiments around identity and visual patterns.", language: "Python", colors: ["#4a3b32", "#d59b73"], symbol: "◎" },
-  { id: "ai_recommendation", title: "AI recommendation", description: "Personalized recommendations powered by machine learning.", language: "Python", colors: ["#3f4c2c", "#b8d26c"], symbol: "✳", image: "/projects/ai-recommendation.svg" },
+  { id: "ai_recommendation", title: "AI Recommendation", description: "Personalized recommendations powered by machine learning.", language: "Python", colors: ["#3f4c2c", "#b8d26c"], symbol: "✳", image: "/projects/ai-recommendation.svg" },
   { id: "Walamar_Analytics", title: "Walamar analytics", description: "Making patterns in data easier to see and act on.", language: "Python", colors: ["#4b3446", "#d89ab3"], symbol: "↗" },
-  { id: "gene-ai", title: "gene-ai", description: "An ongoing exploration into creative generative AI systems.", language: "TypeScript", colors: ["#303d54", "#8daee2"], symbol: "g", image: "/projects/gene-ai.svg" },
+  { id: "gene-ai", title: "Gene AI", description: "An ongoing exploration into creative generative AI systems.", language: "TypeScript", colors: ["#303d54", "#8daee2"], symbol: "g", image: "/projects/gene-ai.svg" },
   { id: "licence_plate_detection", title: "Licence plate detection", description: "Real-time computer vision for detecting vehicle licence plates.", language: "JavaScript", colors: ["#424b38", "#c2d18a"], symbol: "▦" },
-  { id: "logistic_management_assistant", title: "Logistic management assistant", description: "Using intelligent automation to make logistics workflows clearer.", language: "Python", colors: ["#3b4650", "#9ebbc4"], symbol: "→", image: "/projects/logistic-management.svg" },
-  { id: "pocket_research", title: "Pocket research", description: "A compact workspace for collecting, exploring and connecting ideas.", language: "Python", colors: ["#3d4a3e", "#b7d38b"], symbol: "⌂", image: "/projects/pocket-research.svg" },
-  { id: "shortClip", title: "shortClip", description: "Experiments in turning longer content into concise, useful clips.", language: "Python", colors: ["#563c34", "#d79a78"], symbol: "◌", image: "/projects/shortclip.svg" },
+  { id: "logistic_management_assistant", title: "Logistics Management Assistant", description: "Using intelligent automation to make logistics workflows clearer.", language: "Python", colors: ["#3b4650", "#9ebbc4"], symbol: "→", image: "/projects/logistic-management.svg" },
+  { id: "pocket_research", title: "Pocket Research", description: "A compact workspace for collecting, exploring and connecting ideas.", language: "Python", colors: ["#3d4a3e", "#b7d38b"], symbol: "⌂", image: "/projects/pocket-research.svg" },
+  { id: "shortClip", title: "ShortClip", description: "Experiments in turning longer content into concise, useful clips.", language: "Python", colors: ["#563c34", "#d79a78"], symbol: "◌", image: "/projects/shortclip.svg" },
 ];
 
 const DEFAULT_SELECTION = ["ai_recommendation", "gene-ai", "pocket_research", "River-Flood-Predictor", "shortClip", "logistic_management_assistant"];
