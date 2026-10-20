@@ -9,6 +9,7 @@ type Project = {
   language: string;
   colors: [string, string];
   symbol: string;
+  image?: string;
 };
 
 const PROJECTS: Project[] = [
@@ -17,33 +18,28 @@ const PROJECTS: Project[] = [
   { id: "FT-HuggingFace", title: "Fine-tuning lab", description: "Experiments with adapting open models for focused, useful tasks.", language: "Python", colors: ["#765d31", "#e2c56a"], symbol: "∿" },
   { id: "rag-01-kn", title: "RAG knowledge base", description: "Retrieval-augmented generation experiments for grounded answers.", language: "Jupyter", colors: ["#244b4a", "#83c6b2"], symbol: "⌁" },
   { id: "voiceLedger", title: "voiceLedger", description: "Exploring voice as a faster, more natural interface for personal finance.", language: "Python", colors: ["#3a3b58", "#a69ad9"], symbol: "⌁" },
-  { id: "River-Flood-Predictor", title: "River flood predictor", description: "A data-driven look at forecasting and understanding flood risk.", language: "Jupyter", colors: ["#19445b", "#77bfd1"], symbol: "≈" },
+  { id: "River-Flood-Predictor", title: "River flood predictor", description: "A data-driven look at forecasting and understanding flood risk.", language: "Jupyter", colors: ["#19445b", "#77bfd1"], symbol: "≈", image: "/projects/river-flood.svg" },
   { id: "face_recgonition-system", title: "Face recognition system", description: "Computer vision experiments around identity and visual patterns.", language: "Python", colors: ["#4a3b32", "#d59b73"], symbol: "◎" },
-  { id: "ai_recommendation", title: "AI recommendation", description: "Personalized recommendations powered by machine learning.", language: "Python", colors: ["#3f4c2c", "#b8d26c"], symbol: "✳" },
+  { id: "ai_recommendation", title: "AI recommendation", description: "Personalized recommendations powered by machine learning.", language: "Python", colors: ["#3f4c2c", "#b8d26c"], symbol: "✳", image: "/projects/ai-recommendation.svg" },
   { id: "Walamar_Analytics", title: "Walamar analytics", description: "Making patterns in data easier to see and act on.", language: "Python", colors: ["#4b3446", "#d89ab3"], symbol: "↗" },
-  { id: "gene-ai", title: "gene-ai", description: "An ongoing exploration into creative generative AI systems.", language: "TypeScript", colors: ["#303d54", "#8daee2"], symbol: "g" },
+  { id: "gene-ai", title: "gene-ai", description: "An ongoing exploration into creative generative AI systems.", language: "TypeScript", colors: ["#303d54", "#8daee2"], symbol: "g", image: "/projects/gene-ai.svg" },
   { id: "licence_plate_detection", title: "Licence plate detection", description: "Real-time computer vision for detecting vehicle licence plates.", language: "JavaScript", colors: ["#424b38", "#c2d18a"], symbol: "▦" },
   { id: "logistic_management_assistant", title: "Logistic management assistant", description: "Using intelligent automation to make logistics workflows clearer.", language: "Python", colors: ["#3b4650", "#9ebbc4"], symbol: "→" },
-  { id: "pocket_research", title: "Pocket research", description: "A compact workspace for collecting, exploring and connecting ideas.", language: "Python", colors: ["#3d4a3e", "#b7d38b"], symbol: "⌂" },
-  { id: "shortClip", title: "shortClip", description: "Experiments in turning longer content into concise, useful clips.", language: "Python", colors: ["#563c34", "#d79a78"], symbol: "◌" },
-  { id: "Income-expense-Website", title: "Income & expense website", description: "A practical web tool for making personal finances easier to understand.", language: "Python", colors: ["#30485b", "#8eb8c9"], symbol: "＋" },
+  { id: "pocket_research", title: "Pocket research", description: "A compact workspace for collecting, exploring and connecting ideas.", language: "Python", colors: ["#3d4a3e", "#b7d38b"], symbol: "⌂", image: "/projects/pocket-research.svg" },
+  { id: "shortClip", title: "shortClip", description: "Experiments in turning longer content into concise, useful clips.", language: "Python", colors: ["#563c34", "#d79a78"], symbol: "◌", image: "/projects/shortclip.svg" },
+  { id: "Income-expense-Website", title: "Income & expense website", description: "A practical web tool for making personal finances easier to understand.", language: "Python", colors: ["#30485b", "#8eb8c9"], symbol: "＋", image: "/projects/income-expense.svg" },
 ];
 
 const DEFAULT_SELECTION = ["ai_recommendation", "gene-ai", "pocket_research", "River-Flood-Predictor", "shortClip", "Income-expense-Website"];
-const STORAGE_KEY = "featuredProjects-v2";
-
 function ExternalLink({ href, children, className = "" }: { href: string; children: React.ReactNode; className?: string }) {
   return <a className={className} href={href} target="_blank" rel="noreferrer">{children}</a>;
 }
 
 export default function Home() {
-  const [selected, setSelected] = useState<string[]>(DEFAULT_SELECTION);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const selected = DEFAULT_SELECTION;
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    const saved = window.localStorage.getItem(STORAGE_KEY);
-    if (saved) setSelected(JSON.parse(saved));
     const reveal = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) entry.target.classList.add("is-visible");
@@ -62,17 +58,6 @@ export default function Home() {
   }, []);
 
   const featuredProjects = selected.map((id) => PROJECTS.find((project) => project.id === id)).filter((project): project is Project => Boolean(project));
-
-  function toggleProject(id: string) {
-    setSelected((current) => current.includes(id) ? current.filter((projectId) => projectId !== id) : [...current, id]);
-  }
-
-  function saveSelection() {
-    const nextSelection = selected.length ? selected : [DEFAULT_SELECTION[0]];
-    setSelected(nextSelection);
-    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(nextSelection));
-    setIsModalOpen(false);
-  }
 
   return (
     <>
@@ -98,8 +83,8 @@ export default function Home() {
         <section className="marquee" aria-label="Areas of focus"><div>ARTIFICIAL INTELLIGENCE <span>✳</span> MACHINE LEARNING <span>✳</span> GENERATIVE AI <span>✳</span> ARTIFICIAL INTELLIGENCE <span>✳</span> MACHINE LEARNING <span>✳</span></div></section>
 
         <section className="section-shell work-section reveal" id="work">
-          <div className="section-heading"><div><p className="eyebrow">Selected work / 01</p><h2>Things I’ve<br /><em>been building.</em></h2></div><div className="section-aside"><p>A selection of experiments, products and learning projects. Each one is a small step toward building AI that feels useful in the real world.</p><button className="manage-button" onClick={() => setIsModalOpen(true)}>Manage selection <span>＋</span></button></div></div>
-          <div className="project-grid">{featuredProjects.map((project, index) => <ExternalLink className="project-card" href={`https://github.com/JetJerry/${project.id}`} key={project.id}><div className="project-image" style={{ "--c1": project.colors[0], "--c2": project.colors[1] } as React.CSSProperties}><span className="project-index">0{index + 1} / 0{featuredProjects.length}</span><span className="project-symbol">{project.symbol}</span></div><div className="project-meta"><div><h3>{project.title}</h3><p>{project.description}</p></div><span className="project-arrow">↗</span></div></ExternalLink>)}</div>
+          <div className="section-heading"><div><p className="eyebrow">Selected work / 01</p><h2>Things I’ve<br /><em>been building.</em></h2></div><div className="section-aside"><p>A selection of experiments, products and learning projects. Each one is a small step toward building AI that feels useful in the real world.</p></div></div>
+          <div className="project-grid">{featuredProjects.map((project, index) => <ExternalLink className="project-card" href={`https://github.com/JetJerry/${project.id}`} key={project.id}><div className="project-image" style={{ "--c1": project.colors[0], "--c2": project.colors[1] } as React.CSSProperties}>{project.image && <img src={project.image} alt={`${project.title} project preview`} />}<span className="project-index">0{index + 1} / 0{featuredProjects.length}</span><span className="project-symbol">{project.symbol}</span></div><div className="project-meta"><div><h3>{project.title}</h3><p>{project.description}</p></div><span className="project-arrow">↗</span></div></ExternalLink>)}</div>
           <div className="work-footer"><span>More experiments on GitHub</span><ExternalLink className="button button-outline" href="https://github.com/JetJerry?tab=repositories">See all repositories ↗</ExternalLink></div>
         </section>
 
@@ -112,7 +97,6 @@ export default function Home() {
 
       <footer className="site-footer section-shell"><span>© 2026 Rishil Mittal</span><span>Designed & built with curiosity <i>✳</i></span><a href="#top">Back to top ↑</a></footer>
 
-      {isModalOpen && <div className="modal-backdrop is-open" role="presentation" onClick={(event) => event.target === event.currentTarget && setIsModalOpen(false)}><div className="project-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"><button className="modal-close" onClick={() => setIsModalOpen(false)} aria-label="Close project manager">×</button><p className="eyebrow">Portfolio editor</p><h2 id="modal-title">Choose your<br /><em>featured work.</em></h2><p className="modal-note">Your choices are saved in this browser. To update the default selection for everyone, edit <code>PROJECTS</code> in <code>app/page.tsx</code>.</p><div className="project-selector">{PROJECTS.map((project) => <label className="selector-item" key={project.id}><input type="checkbox" checked={selected.includes(project.id)} onChange={() => toggleProject(project.id)} /><span>{project.title}</span><span className="selector-language">{project.language}</span></label>)}</div><button className="button button-primary modal-save" onClick={saveSelection}>Save selection <span>→</span></button></div></div>}
     </>
   );
 }
